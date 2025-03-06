@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import xhwmImage from '../assets/xhwm.png'
-import './PreferencePage.css'
+import qqImage from '../assets/qq.jpg'
+import './SinglePage.css'
 
-function PreferencePage() {
-  const navigate = useNavigate()
+function SinglePage() {
   const [dislikeSize, setDislikeSize] = useState(100)
   const [likeSize, setLikeSize] = useState(100)
+  const [showQQ, setShowQQ] = useState(false)
   
   const handleDislike = () => {
     if (dislikeSize > 5) {
@@ -19,7 +19,15 @@ function PreferencePage() {
   }
   
   const handleLike = () => {
-    navigate('/thank-you')
+    setShowQQ(true)
+  }
+  
+  if (showQQ) {
+    return (
+      <div className="thank-you-container">
+        <img src={qqImage} alt="Thank you" className="thank-you-image" />
+      </div>
+    )
   }
   
   return (
@@ -57,4 +65,4 @@ function PreferencePage() {
   )
 }
 
-export default PreferencePage
+export default SinglePage
