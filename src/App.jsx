@@ -4,8 +4,11 @@ import ThankYouPage from './components/ThankYouPage'
 import './App.css'
 
 function App() {
+  // 仅在生产环境使用 basename
+  const basename = import.meta.env.PROD ? '/aini/' : '/'
+  
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
         <Route path="/" element={<PreferencePage />} />
         <Route path="/thank-you" element={<ThankYouPage />} />
